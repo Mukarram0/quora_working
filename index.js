@@ -1,6 +1,5 @@
 const express=require("express");
 const app=express();
-const port=8080;
 const path=require("path");
 const{ v4: uuidv4}=require('uuid');
 const methodoverride=require("method-override");
@@ -27,9 +26,10 @@ let posts=[
     content:"Paise nhi hain hain bhai",
 }
 ]
-app.listen(port,()=>
-{
-console.log(`server ${port} is online...`);
+const port = process.env.PORT || 8080;
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });
 
 app.get("/posts",(req,res)=>
